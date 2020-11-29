@@ -114,6 +114,9 @@ header::after {
 
 .navbar-brand img {
   width: 135px;
+  position:absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .navbar-collapse .search-form input[type="text"] {
