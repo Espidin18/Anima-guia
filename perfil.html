@@ -64,6 +64,15 @@
   		  .about{
   		  padding: 40px;
   		  }
+  		  .seleccion{
+  		  border: 3px solid #58ACFA;
+  		  background-color:#faa658;
+  		  color: white;
+  		  font-size: 17px;
+  		  Width: 150px;
+  		  border-radius: 12%;
+  		  height: 35px;
+  		  }
     </style>
 
 	 <!-- Favicons -->
@@ -76,7 +85,7 @@
 	<div class="header">
 		<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="Anima guinda"></a>
 		<img class="avatar" src="https://i.pinimg.com/564x/8c/44/9a/8c449ab45fb85ef6e2334d4714f6b6ac.jpg"/>
-		<h1 class="user-name">avatar 1</h1>
+		<h1 class="user-name" contenteditable>avatar 1</h1>
 	</div>
 	<ul class= "socials">
 		<li>
@@ -91,7 +100,7 @@
 
 		</li>
 	</ul>
-	<div class="about">
+	<div class="about" contenteditable>
 		<h3>Acerca de avatar 1</h3>
 		<p>
 		(Keanu Charles Reeves; Beirut, Líbano, 1964) Actor de cine estadounidense. 
@@ -113,6 +122,18 @@
 		 a lo que contribuyó no poco su cultivada apostura en revistas y portadas: Reeves ha consolidado una imagen de
 		hombre introvertido, apartado del aspecto frívolo del mundo del espectáculo y reacio a ser pasto de la prensa.
 		</p>
+	</div>
+	<div class="about">
+		<!-- es un formulario para que puedan cambiar los datos -->
+			<form name="tu_jta" action="#">
+				<select class="seleccion" name= "Editar">
+					<option selected>Escoga una</option>
+					<option  value="0">Guardar cmb.</option>
+					<option id="fondo" value="1">Edit. fondo</option>
+					<option id="imagen" value= "2">Edit. imagen</option>
+					<option id="info" value = "3">Edit. redes</option>
+				</select>
+			</form>
 	</div>
 	        <!-- Foot Note Start -->
         <div class="foot-note">
@@ -138,5 +159,9 @@
     <script src="assets/js/lightgallery-all.min.js"></script>
     <!--Template Script-->
     <script src="assets/js/main.js"></script>
+      <script type="text/javascript" src='Validación.js'>
+
+    		//# sourceURL=pen.js
+ 		</script>
 </body>
 </html>

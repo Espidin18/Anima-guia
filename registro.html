@@ -1,4 +1,4 @@
-
+﻿
 <html lang="en" class=""><head>
 
   <meta charset="UTF-8">
@@ -169,21 +169,21 @@ to {
 </head>
 
 <body>
-  <form class="login-form">
-  <p class="login-text">
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-lock fa-stack-1x"></i>
-    </span>
-  </p>
-  <input type="email" id="correo" class="login-username" ="true"="" required="true" placeholder="Correo">
-  <input type="tel" id="numero" class="login-username" ="true"="" required="true" placeholder="numero">
-  <input type="tex" id="nombreusu" class="login-username" ="true"="" required="true" placeholder="usuario">
-  <input type="text" id="nombre_s" class="login-username" ="true"="" required="true" placeholder="nombres (separados con espacio)">
-  <input type="text" id="apellidos" class="login-username" ="true"="" required="true" placeholder="Apellidos (separados con espacio)">
-  <input type="password" id="clave" class="login-password" required="true" placeholder="Contraseña">
+  <form class="login-form" action="conexion.php" method="post">
+      <p class="login-text">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-lock fa-stack-1x"></i>
+        </span>
+      </p>
+      <input type="email" name="correo" class="login-username" ="true"="" required= "true" placeholder="Correo">
+      <input type="tel" name="telefonom" class="login-username" ="true"="" required="true" placeholder="numero">
+      <input type="text" name="nombreusu" class="login-username" ="true"="" required="true" placeholder="usuario">
+      <input type="text" name="nombre_s" class="login-username" ="true"="" required="true" placeholder="nombres (separados con espacio)">
+      <input type="text" name="apellidos" class="login-username" ="true"="" required="true" placeholder="Apellidos (separados con espacio)">
+      <input type="password" name="contrasena" class="login-password" required="true" placeholder="Contraseña">
 
-  <input type="submit" name="Login" onclick='return enviarFormulario()' value="Registra" class="login-submit">
+  <button type="submit" name="Login" class="login-submit">Registra</button> 
 </form>
 <a href="index.html" class="login-forgot-pass">menu</a>
 <div class="underlay-photo"></div>
