@@ -1,1 +1,0 @@
-require_once "extensiones/vendor/autoload.php";
