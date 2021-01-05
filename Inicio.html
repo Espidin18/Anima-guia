@@ -1,4 +1,4 @@
-
+﻿
 <html lang="en" class=""><head>
 
   <meta charset="UTF-8">
@@ -170,16 +170,16 @@ to {
 </head>
 
 <body>
-  <form class="login-form">
+  <form class="login-form" action="sesionini.php" method="post">
   <p class="login-text">
     <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-lock fa-stack-1x"></i>
     </span>
   </p>
-  <input type="email" id="correo" class="login-username" ="true"="" required="true" placeholder="Correo">
-  <input type="password" id="clave" class="login-password" required="true" placeholder="Contraseña">
-  <input type="submit" name="Login" onclick='return enviarFormulario()' value="Entra" class="login-submit">
+  <input type="email" name="correo" class="login-username" ="true"="" required="true" placeholder="Correo">
+  <input type="password" name="contrasena" class="login-password" required="true" placeholder="Contraseña">
+  <input type="submit" name="submite" onclick='return enviarFormulario()' value="Entra" class="login-submit">
 </form>
 <a href="registro.html" class="login-forgot-pass">Registrate</a>
 <div class="underlay-photo"></div>
