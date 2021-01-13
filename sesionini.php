@@ -1,33 +1,45 @@
 <?php
-session_start(); // Iniciando sesion
-$error=''; // Variable para almacenar el mensaje de error
 
-	if (isset($_POST['submite'])) {
-		if (empty($_POST['correo']) || empty($_POST['contrasena'])) {
-		$error = "Correo o Contrasena incorrecta";
-		}
-			else
-			{
-			$username=$_POST['correo'];
-			$password=$_POST['contrasena'];
-			// Estableciendo la conexion a la base de datos
-			include("conexion.php");//Contiene de conexion a la base de datos
+require 'cifrado.php';
+
+try {
  
-			// Para proteger de Inyecciones SQL 
-			$username    = mysqli_real_escape_string($con,(strip_tags($correo,ENT_QUOTES)));
-			$password =  sha1($contrasena);
-			$sql = "SELECT correo, contrasena FROM usuario_perfil WHERE correo = '$correo' and password= '$contrasena';";
-			$query=mysqli_query($con,$mysqli);
-			$counter=mysqli_num_rows($query);
-				if ($counter==1){
-						$_SESSION['login_user_sys']=$nombreusu; // Iniciando la sesion
-						header("location: index.html"); // Redireccionando a la pagina profile.php
-	
-	
-					} else {
-					$error = "El correo electrónico o la contraseña es inválida.";	
-					}
-			}
-	}
+ $correo=htmlentities(addslashes($_POST['correo']));
+ $password=htmlentities(addslashes($_POST['contrasena']));
 
+ 
+ $counter = 0;
+
+ 
+ $sql = "SELECT * FROM usuario_perfil WHERE correo = :correo";
+
+
+ $resultado=$con->prepare($sql);
+
+
+ $resultado->execute(array(":correo"=>$correo));
+
+
+ while($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+ 
+  if(password_verify($password, $registro['contrasena'])) {
+   
+   $counter++;
+  }
+ }
+
+ if ($counter>0) {
+	echo "el usuario existe";
+	$_SESSION['login_user_sys']=$nombreusu; // Iniciando la sesion
+	header("location: perfil.html"); // Redireccionando a la pagina de inicio (que aun no la acaba Azulito)
+	} 
+	else {
+  header("location: sesion.html");
+ }
+
+
+ $con = null;
+} catch(Exception $e) {
+   die($e->getMessage());
+}
 ?>
