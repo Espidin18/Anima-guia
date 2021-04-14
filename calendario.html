@@ -6,6 +6,9 @@
     <meta name="author" content="bp">
     <meta name="description" content="Pagina estudiantil para la administración">
     <meta name="keywords" content="Administrar, premium, redes estudiantiles">
+    <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- estamos refrescando la pagina cada 400 segundos -->
     <meta http-equiv="refresh" content="400">
     <!-- Adaptar la página a dispositivos moviles -->
@@ -15,6 +18,8 @@
     <!-- Fuentes de google -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i%7CRajdhani:400,600,700"
           rel="stylesheet">
+    <!--Entrada de css pa calendario-->
+      <link rel="stylesheet" href="newcss.css">
     <!-- Estilos de plugins -->
     <link rel="stylesheet" href="assets/css/loader/loaders.css">
     <link rel="stylesheet" href="assets/css/font-awesome/font-awesome.css">
@@ -130,12 +135,9 @@
         }
 
         .contenedor {
-            width: 90px;
-            height: 240px;
-            position: absolute;
-            right: 0px;
+            
+            right: 46%;
             bottom: 0px;
-            float: right;
         }
 
         .btn-flotante {
@@ -241,8 +243,6 @@
 </head>
 <body>
 
-    <h1>Calendario Anima Guinda</h1>
-
     <div class="month">
         <ul>
             <li class="prev">&#10094;</li>
@@ -253,61 +253,44 @@
             </li>
             <li class="next">&#10095;</li>
             <li>
-                Diciembre<br>
-                <span style="font-size:18px">2020</span>
+                Enero<br>
+                <span style="font-size:18px">2021</span>
             </li>
         </ul>
     </div>
 
-    <ul class="weekdays">
-        <li>Lunes</li>
-        <li>Martes</li>
-        <li>Miercoles</li>
-        <li>Jueves</li>
-        <li>Viernes</li>
-        <li>Sabado</li>
-        <li>Domingo</li>
-    </ul>
+   <!--<h1 class="title">Animaguinda</h1>-->
 
-    <ul class="days">
-        <li>30</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-        <li>10</li>
-        <li>11</li>
-        <li>12</li>
-        <li>13</li>
-        <li>14</li>
-        <li>15</li>
-        <li>16</li>
-        <li><span class="active"><a href="tareadeldia.html">17</a></span></li>
-        <li><a href="tareadeldia.html">18</a></li>
-        <li><a href="tareadeldia.html">19</a></li>
-        <li><a href="tareadeldia.html">20</a></li>
-        <li><a href="tareadeldia.html">21</a></li>
-        <li><a href="tareadeldia.html">22</a></li>
-        <li><a href="tareadeldia.html">23</a></li>
-        <li><a href="tareadeldia.html">24</a></li>
-        <li><a href="tareadeldia.html">25</a></li>
-        <li>26</li>
-        <li>27</li>
-        <li>28</li>
-        <li>29</li>
-        <li>30</li>
-        <li>31</li>
-    </ul>
-<!--milo part -->
-        
-        <div class="row">
-            <iframe src="codelab-friendlychat-web\web-start\public\index.html" height="840" width="600"></iframe>
+    <div class="calendario">
+        <div class="calendar__info">
+            <div class="calendar__prev" id="prev-month">&#9664;</div>
+            <div class="calendar__month" id="month"></div>
+            <div class="calendar__year" id="year"></div>
+            <div class="calendar__next" id="next-month">&#9654;</div>
         </div>
+
+        <div class="calendar__week">
+            <div class="calendar__day calendar__item">Lun</div>
+            <div class="calendar__day calendar__item">Mar</div>
+            <div class="calendar__day calendar__item">Mier</div>
+            <div class="calendar__day calendar__item">Jue</div>
+            <div class="calendar__day calendar__item">Vie</div>
+            <div class="calendar__day calendar__item">Saba</div>
+            <div class="calendar__day calendar__item">Dom</div>
+        </div>
+
+        <div class="calendar__dates" id="dates"></div>
+        
+    </div>
+
+    <script src="jscalendario.js"></script>
+<!--milo part -->
+        <center>
+            <iframe src="http://localhost:5000/" height="840" width="600" r></iframe>
+        </center>
+        
+            
+        
 
     <!-- Foot Note Start -->
     <div class="foot-note">
