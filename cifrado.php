@@ -1,3 +1,4 @@
+
 <?php  
 require 'conexion.php';
 
@@ -19,21 +20,23 @@ if ($con == true) {
  $insert->bindParam(':correo', $_POST['correo']);
  $insert->bindParam(':telefonom', $_POST['telefonom']);
  $insert->bindParam(':nombreusu', $_POST['nombreusu']);
- $insert->bindParam(':nombre_s', $_POST['nombre_s)']);
- $insert->bindParam(':apellidos', $_POST['apellidos)']);
+ $insert->bindParam(':nombre_s', $_POST['nombre_s']);
+ $insert->bindParam(':apellidos', $_POST['apellidos']);
  $insert->bindParam(':contrasena', $clave_cifrada);
 
  //si no la regue al chile y todo esta correcto ejecuto lo anterior
  $insert->execute();
 
+
+
  $con = null;
  
- header("Location: http://26.17.94.35/BP/Anima%20Guinda/index.html");
+ header("Location: index.html");
  
 }
  else {
 	 
-	header("Location: http://localhost/BP/Registro.html");
+ header("Location: index.html");
 	 
  }
 	?>

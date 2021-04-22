@@ -1,0 +1,288 @@
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Usuario</title>
+
+    <style>
+        @font-face {
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 200;
+            src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVtaorCIPrQ.ttf) format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 300;
+            src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEorCIPrQ.ttf) format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCIPrQ.ttf) format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 500;
+            src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvoorCIPrQ.ttf) format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 700;
+            src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCIPrQ.ttf) format('truetype');
+        }
+
+        body {
+            background-color: #50b98a;
+            color: #20503b;
+            font-family: Raleway;
+            font-size: 1.188em;
+            font-weight: 400;
+            padding-bottom: 90px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1 {
+            font-size: 2.1em;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        h3 {
+            -moz-transition: all 0.35s ease;
+            -ms-transition: all 0.35s ease;
+            -o-transition: all 0.35s ease;
+            -webkit-transition: all 0.35s ease;
+            background-color: #62c096;
+            border-bottom: 3px solid #40a075;
+            margin: 0;
+            padding: 18px 15px;
+            transition: all 0.35s ease;
+            font-weight: 500;
+        }
+
+            h3:hover {
+                background-color: #74c8a3;
+                color: #193e2d;
+                cursor: pointer;
+            }
+
+            h3::before {
+                content: "\276f";
+                font-size: 18px !important;
+                float: left;
+                line-height: 30px;
+                margin: 0 15px 0 5px;
+                opacity: 0.5;
+                -moz-transition: all 0.15s ease;
+                -ms-transition: all 0.15s ease;
+                -o-transition: all 0.15s ease;
+                -webkit-transition: all 0.15s ease;
+                transition: all 0.15s ease;
+            }
+
+            h3.cerrar {
+                cursor: pointer;
+            }
+
+                h3.cerrar::after {
+                    content: "\2715";
+                    float: right;
+                    font-size: 11px;
+                    font-weight: 300;
+                    line-height: 30px;
+                }
+
+                h3.cerrar::before {
+                    -moz-transform: rotate(-90deg) !important;
+                    -ms-transform: rotate(-90deg) !important;
+                    -o-transform: rotate(-90deg) !important;
+                    -webkit-transform: rotate(-90deg) !important;
+                    transform: rotate(-90deg) !important;
+                }
+
+        h4 {
+            font-size: 21px;
+            font-weight: 400;
+            margin: 0 auto;
+            width: 70%;
+            border-bottom: 1px dotted #74c8a3;
+            padding-bottom: 20px;
+        }
+
+        div {
+            margin: 0;
+        }
+
+            div:first-child {
+                border: none;
+                margin-top: 45px;
+            }
+
+        img {
+            height: 16px;
+            width: 16px;
+        }
+
+        h3:hover::before {
+            opacity: 0.55;
+            -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+
+        div.respuesta {
+            background: #40a075;
+            margin-bottom: 20px;
+            line-height: 1.8em;
+        }
+
+            div.respuesta p {
+                font-weight: 400;
+                margin: 0;
+                padding: 25px 50px;
+            }
+
+        #header {
+            background: #40a075;
+            margin: 0 0 20px 0;
+            padding: 30px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+            #header a {
+                color: #bde5d3;
+                text-decoration: none;
+            }
+
+        #preguntas {
+            margin: 40px auto 0;
+            padding: 0 5%;
+        }
+
+        #cerrartodas {
+            background-color: #ed1409;
+            bottom: 30px;
+            color: #ffffff;
+            font-size: 14px;
+            padding: 5px 10px;
+            position: fixed;
+            right: 10%;
+            text-decoration: none;
+            z-index: 1;
+        }
+		table {
+		width: 100%;
+		}
+		.50 {
+		width: 50%;
+		}
+    </style>
+   
+</head>
+
+<body translate="no">
+
+    <div id="preguntas">
+        <div id="header">
+            <h1>Preguntas Frecuentes</h1>
+            <h4>Dar clic para abrir las preguntas</h4>
+            <p><small>hecho por <strong>BP</small></p>
+        </div>
+		
+		<?php
+
+		$query = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=0';
+
+		$result = mysql_query($query) or die('Consulta fallida: ' . mysql_error());		
+		
+		$query1 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=1';
+
+		$result1 = mysql_query($query1) or die('Consulta fallida: ' . mysql_error());
+		
+		$query2 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=2';
+
+		$result2 = mysql_query($query2) or die('Consulta fallida: ' . mysql_error());
+		
+		$query3 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=3';
+
+		$result3 = mysql_query($query3) or die('Consulta fallida: ' . mysql_error());
+		
+		$query4 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=4';
+
+		$result4 = mysql_query($query4) or die('Consulta fallida: ' . mysql_error());
+		
+		$query5 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=5';
+
+		$result5 = mysql_query($query5) or die('Consulta fallida: ' . mysql_error());
+		
+		$query6 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=6';
+
+		$result6 = mysql_query($query6) or die('Consulta fallida: ' . mysql_error());
+		
+		$query7 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=7';
+
+		$result7 = mysql_query($query7) or die('Consulta fallida: ' . mysql_error());		
+		?>
+		
+<table border="0" class="table table-striped" width="80%">
+		<thead>
+		<tr>
+			<th><font size=5>Pregunta</font></th>
+			<th><font size=5>Respuesta</font></th>
+		</tr>
+		</thead>
+		<tr>
+	<?php while ($row = mysql_fetch_array($result)){?>
+	<td><font size=3><?php $row['pregunta'] ?></font></font></td>
+    <td><font size=3><?php $row['respuesta'] ?></font></td>
+		</tr>
+	<tr>
+	<?php while ($row1 = mysql_fetch_array($result1)){?>
+	<td><font size=3><?php $row1['pregunta'] ?></font></td>
+    <td><font size=3><?php $row1['respuesta'] ?></font></td>
+		</tr>
+    <tr>
+	<?php while ($row2 = mysql_fetch_array($result2)){?>
+	<td><font size=3><?php $row2['pregunta'] ?></font></td>
+    <td><font size=3><?php $row2['respuesta'] ?></font></td>
+		</tr>
+    <tr>
+	<?php while ($row3 = mysql_fetch_array($result3)){?>
+	<td><font size=3><?php $row3['pregunta'] ?></font></td>
+    <td><font size=3><?php $row3['respuesta'] ?></font></td>
+		</tr>
+    <tr>
+	<?php while ($row4 = mysql_fetch_array($result4)){?>
+	<td><font size=3><?php $row4['pregunta'] ?></font></td>
+    <td><font size=3><?php $row4['respuesta'] ?></font></td>
+		</tr>
+    <tr>
+	<?php while ($row5 = mysql_fetch_array($result5)){?>
+	<td><font size=3><?php $row5['pregunta'] ?></font></td>
+    <td><font size=3><?php $row5['respuesta'] ?></font></td>
+		</tr>
+    <tr>
+	<?php while ($row6 = mysql_fetch_array($result6)){?>
+	<td><font size=3><?php $row6['pregunta'] ?></font></td>
+    <td><font size=3><?php $row6['respuesta'] ?></font></td>
+		</tr>
+    <tr>
+	<?php while ($row7 = mysql_fetch_array($result7)){?>
+	<td><font size=3><?php $row7['pregunta'] ?></font></td>
+    <td><font size=3><?php $row7['respuesta'] ?></font></td>
+		</tr>
+</table>
+</body>
+</html>

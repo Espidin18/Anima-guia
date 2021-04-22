@@ -1,6 +1,6 @@
 <?php
 
-require 'cifrado.php';
+include 'conexion.php';
 
 try {
  
@@ -19,27 +19,30 @@ try {
 
  $resultado->execute(array(":correo"=>$correo));
 
+ $registro=$resultado->fetch(PDO::FETCH_ASSOC);
 
- while($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
- 
-  if(password_verify($password, $registro['contrasena'])) {
+  if (!$registro) {
+       header("Location: registro.html"); 
+    } 
+	else {
+	if(password_verify($password, $registro['contrasena'])) {
    
-   $counter++;
-  }
- }
-
- if ($counter>0) {
-	echo "el usuario existe";
+		 $counter++;
+		 }
+	if ($counter>0) {
+	
 	$_SESSION['login_user_sys']=$nombreusu; // Iniciando la sesion
-	header("location: perfil.html"); // Redireccionando a la pagina de inicio (que aun no la acaba Azulito)
+	header("index.html");  // Redireccionando a la pagina de inicio (que aun no la acaba Azulito)	
 	} 
 	else {
-  header("location: sesion.html");
- }
+  header("Location: index.html");
+	}
 
-
+	
  $con = null;
-} catch(Exception $e) {
+ }
+} 
+catch(Exception $e) {
    die($e->getMessage());
 }
 ?>
