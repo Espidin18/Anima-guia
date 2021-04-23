@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>HTML</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
         @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
 
@@ -13,7 +15,10 @@
             padding: 0;
             margin: 0;
             font-family: 'Sniglet', cursive;
-           
+
+        }
+        a{
+            font-family: 'Bangers', cursive;
         }
 
         h1 {
@@ -59,15 +64,15 @@
 
     .fish { background-image: url('https://images.squarespace-cdn.com/content/v1/59c59fa4b1ffb6eac15fbe67/1578341136111-OEA7AQA4AXAZSG3AL8B6/ke17ZwdGBToddI8pDm48kFkI06N1EcdZF5C7Y458xSVZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVGexNsyshgMfITN3O9e7WryW9r7fPQpIimsKAJkWLT8shur-lC0WofN0YB1wFg-ZW0/burro.gif');
             width: 300px;
-            height: 348px; 
-            margin-left: -235px; 
-            position: absolute; 
-            animation: myfirst 24s; 
-            -webkit-animation: myfirst 24s; 
-            animation-iteration-count: infinite; 
+            height: 348px;
+            margin-left: -235px;
+            position: absolute;
+            animation: myfirst 24s;
+            -webkit-animation: myfirst 24s;
+            animation-iteration-count: infinite;
             -webkit-animation-iteration-count: infinite;
-            animation-timing-function: linear; 
-            -webkit-animation-timing-function: linear; 
+            animation-timing-function: linear;
+            -webkit-animation-timing-function: linear;
 
     }
 
@@ -84,7 +89,7 @@
 
         header {
             height: 160px;
-    
+
         }
 
         #form {
@@ -183,7 +188,77 @@
             background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo-error.png');
             color: red;
         }
+
+            /* Custom dropdown */
+            .custom-dropdown {
+              position: relative;
+              display: inline-block;
+              vertical-align: middle;
+              margin: 10px; /* demo only */
+            }
+
+            .custom-dropdown select {
+              background-color: #ff9900;
+              color: #952f57;
+              font-size: inherit;
+              padding: .5em;
+              padding-right: 2.5em;
+              border: 0;
+              margin: 0;
+              border-radius: 3px;
+              text-indent: 0.01px;
+              text-overflow: '';
+              -webkit-appearance: button; /* hide default arrow in chrome OSX */
+            }
+
+            .custom-dropdown::before,
+            .custom-dropdown::after {
+              content: "";
+              position: absolute;
+              pointer-events: none;
+            }
+
+            .custom-dropdown::after { /*  Custom dropdown arrow */
+              content: "\25BC";
+              height: 1em;
+              font-size: .625em;
+              line-height: 1;
+              right: 1.2em;
+              top: 50%;
+              margin-top: -.5em;
+            }
+
+            .custom-dropdown::before { /*  Custom dropdown arrow cover */
+              width: 2em;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              border-radius: 0 3px 3px 0;
+            }
+
+            .custom-dropdown select[disabled] {
+              color: rgba(0,0,0,.3);
+            }
+
+            .custom-dropdown select[disabled]::after {
+              color: rgba(0,0,0,.1);
+            }
+
+            .custom-dropdown::before {
+              background-color: rgba(0,0,0,.15);
+            }
+
+            .custom-dropdown::after {
+              color: rgba(0,0,0,.4);
+            }
     </style>
+    <script>
+    function enlace() {
+          // Buscamos el select y el valor del mismo
+          var value = document.getElementsByClassName('w-dropdown')[0].value;
+          if (value != "") { location.href = value; }
+        }
+    </script>
 </head>
 
 <body>
@@ -191,23 +266,36 @@
         <h1>diseñador</h1>
     </header>
      <div id="form">
-	 
+
         <form class="login-form" action="diseñador.php" id="waterform" method="post">
 
 		<div class="formgroup" id="name-form">
-                <label for="name">Pregunta</label>
+                <label for="pregunta">Pregunta</label>
                 <input type="text" id="pregunta" name="pregunta" />
             </div>
 
             <div class="formgroup" id="message-form">
-                <label for="message">Respuesta</label>
+                <label for="respuesta">Respuesta</label>
                 <input type="text" id="respuesta" name="respuesta" />
             </div>
 
             <input type="submit" value="enviala" />
         </form>
     </div>
+	<div align="center">
+		<h1>Borrar un registro</h1>
+		<br>
+        <span class="custom-dropdown big">
+				<select onchange="location = this.value" name="tuputamadre">
+                    <option selected>Escoge tu opción</option>
+                    <option value="http://192.168.0.2/bp/Anima%20Guinda/">cambiar respuesta</option>
+                    <option value="http://192.168.0.2/bp/Anima%20Guinda/borrap1.php">borrar respuesta</option>
+                </select>
+        </span>
+
+            <br>
+            <br>
+            <br>
+	</div>
 </body>
 </html>
-
-

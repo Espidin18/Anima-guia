@@ -189,7 +189,7 @@
 		width: 50%;
 		}
     </style>
-   
+
 </head>
 
 <body translate="no">
@@ -200,42 +200,18 @@
             <h4>Dar clic para abrir las preguntas</h4>
             <p><small>hecho por <strong>BP</small></p>
         </div>
-		
+
 		<?php
 
-		$query = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=0';
+		$servidor = 'localhost';
+		$base_datos = 'guinda';
+		$usuario = 'root';
+		$clave = '';
 
-		$result = mysql_query($query) or die('Consulta fallida: ' . mysql_error());		
-		
-		$query1 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=1';
+		$con = new PDO("mysql:host=$servidor; dbname=$base_datos", $usuario, $clave);
 
-		$result1 = mysql_query($query1) or die('Consulta fallida: ' . mysql_error());
-		
-		$query2 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=2';
-
-		$result2 = mysql_query($query2) or die('Consulta fallida: ' . mysql_error());
-		
-		$query3 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=3';
-
-		$result3 = mysql_query($query3) or die('Consulta fallida: ' . mysql_error());
-		
-		$query4 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=4';
-
-		$result4 = mysql_query($query4) or die('Consulta fallida: ' . mysql_error());
-		
-		$query5 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=5';
-
-		$result5 = mysql_query($query5) or die('Consulta fallida: ' . mysql_error());
-		
-		$query6 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=6';
-
-		$result6 = mysql_query($query6) or die('Consulta fallida: ' . mysql_error());
-		
-		$query7 = 'SELECT pregunta, respuesta FROM preguntas WHERE idPregunta=7';
-
-		$result7 = mysql_query($query7) or die('Consulta fallida: ' . mysql_error());		
 		?>
-		
+
 <table border="0" class="table table-striped" width="80%">
 		<thead>
 		<tr>
@@ -243,46 +219,12 @@
 			<th><font size=5>Respuesta</font></th>
 		</tr>
 		</thead>
+		<?php foreach ($con->query('SELECT * from preguntas') as $row){ ?> 
 		<tr>
-	<?php while ($row = mysql_fetch_array($result)){?>
-	<td><font size=3><?php $row['pregunta'] ?></font></font></td>
-    <td><font size=3><?php $row['respuesta'] ?></font></td>
+	<td><font size=3><?php echo $row['pregunta'] ?></font></td>
+    <td><font size=3><?php echo $row['respuesta'] ?></font></td>
 		</tr>
-	<tr>
-	<?php while ($row1 = mysql_fetch_array($result1)){?>
-	<td><font size=3><?php $row1['pregunta'] ?></font></td>
-    <td><font size=3><?php $row1['respuesta'] ?></font></td>
-		</tr>
-    <tr>
-	<?php while ($row2 = mysql_fetch_array($result2)){?>
-	<td><font size=3><?php $row2['pregunta'] ?></font></td>
-    <td><font size=3><?php $row2['respuesta'] ?></font></td>
-		</tr>
-    <tr>
-	<?php while ($row3 = mysql_fetch_array($result3)){?>
-	<td><font size=3><?php $row3['pregunta'] ?></font></td>
-    <td><font size=3><?php $row3['respuesta'] ?></font></td>
-		</tr>
-    <tr>
-	<?php while ($row4 = mysql_fetch_array($result4)){?>
-	<td><font size=3><?php $row4['pregunta'] ?></font></td>
-    <td><font size=3><?php $row4['respuesta'] ?></font></td>
-		</tr>
-    <tr>
-	<?php while ($row5 = mysql_fetch_array($result5)){?>
-	<td><font size=3><?php $row5['pregunta'] ?></font></td>
-    <td><font size=3><?php $row5['respuesta'] ?></font></td>
-		</tr>
-    <tr>
-	<?php while ($row6 = mysql_fetch_array($result6)){?>
-	<td><font size=3><?php $row6['pregunta'] ?></font></td>
-    <td><font size=3><?php $row6['respuesta'] ?></font></td>
-		</tr>
-    <tr>
-	<?php while ($row7 = mysql_fetch_array($result7)){?>
-	<td><font size=3><?php $row7['pregunta'] ?></font></td>
-    <td><font size=3><?php $row7['respuesta'] ?></font></td>
-		</tr>
+	<?php } ?>
 </table>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<?php
+
+
+<?php
+
+	if(isset($_GET['id']))
+	{
+		$id=$_GET['id'];
+		include ("mysql.php");
+		$query="SELECT * FROM contactos where id='".$id."'";
+		$result = mysql_query($query);
+
+
+			if ($row = mysql_fetch_array($result))
+			{ 
+  				<imput type="text" name="nombre" value="<?php echo $row['nombre'];?>"/>
+       			}
+	 }
+?>
+
+
+
+?>
