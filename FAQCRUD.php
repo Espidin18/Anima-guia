@@ -268,6 +268,7 @@
 <table border="0" class="table table-striped" width="80%">
 		<thead>
 		<tr>
+            <th><font size=5>idPregunta</font></th>
 			<th><font size=5>Pregunta</font></th>
 			<th><font size=5>Respuesta</font></th>
 		</tr>
@@ -276,14 +277,20 @@
 		foreach ($con->query("SELECT * from preguntas") as $row){
 		?>
 		<tr>
+	<td><font size=3><?php echo $row['idPregunta'] ?></font></td>
 	<td><font size=3><?php echo $row['pregunta'] ?></font></td>
+    <td><font size=3><?php echo $row['respuesta'] ?></font></td>
     <td>
         <form   method='POST' action="DELETE.php">
         <input type='hidden' name='eliminar' value='".$result -> pregunta"'>
-        <button class="boton verde" name='eliminar'>Eliminar</button>
+        <button class="boton verde" name='del'>Eliminar</button>
         </form>
     </td>
-	<td><font size=3>CAMBIA</font></td>
+	<td>
+
+	<a class="boton rojo" href="Cambiar.html" >Cambiar</a>
+		</form>
+    </td>
 		</tr>
 
 	<?php }?>
