@@ -157,6 +157,66 @@ include 'session.php';
             text-decoration: none;
             z-index: 1;
         }
+        .boton{
+      text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+            text-align:center;
+            text-decoration: none;
+      font-family: 'Helvetica Neue', Helvetica, sans-serif;
+      display:inline-block;
+            color: #FFF;
+            background: #7F8C8D;
+            padding: 7px 20px;
+            white-space: nowrap;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 100px;
+            margin: 10px 5px;
+            -webkit-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .azul{
+        background: #3498DB;
+        box-shadow: 0px 5px 0px 0px #2980B9;
+        }
+
+        .azul:hover{
+        background: #39a0e5;
+        }
+
+        .azul:active{
+        box-shadow: 0px 2px 0px 0px #2980B9;
+        }
+
+        .verde{
+        background: #2ECC71;
+        box-shadow: 0px 5px 0px 0px #27AE60;
+        }
+
+        .verde:hover{
+        background: #32db78;
+        }
+
+        .verde:active{
+        box-shadow: 0px 2px 0px 0px #27AE60;
+        }
+
+        .rojo{
+        background: #E74C3C;
+        box-shadow: 0px 5px 0px 0px #C0392B;
+        }
+
+        .rojo:hover{
+        background: #ff5242;
+        }
+
+        .rojo:active{
+        box-shadow: 0px 2px 0px 0px #C0392B;
+        }
+
     </style>
 
 </head>
@@ -168,22 +228,12 @@ include 'session.php';
             <h1>Preguntas Frecuentes</h1>
             <p><small>Bienvenid@ <strong><i><?php echo $login_session; ?></i></small></p>
         </div>
+        <?php
 
-		<?php
-
-
-
-		if (isset($_SESSION['tipo'])== 1){
-					header('location: http://192.168.0.2/bp/Anima%20Guinda/FAQCRUD.php');
-		}elseif (isset($_SESSION['tipo'])== 1) {
-            header('location: FAQdiseñador.php');
-        }elseif (isset($_SESSION['tipo'])== 1) {
-            header('location: FAQdiseñador.html');
-        }else{
-            header('Location: index.html');
-        }
-
-		?>
+                if ($_SESSION['tipo'] != 2){  ?>
+                    <a class="boton azul" href="FAQdiseñador.html" >Cambiar</a>
+             <?php   }
+        ?>
 
 <table border="0" class="table table-striped" width="80%">
 		<thead>
