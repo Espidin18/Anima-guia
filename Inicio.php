@@ -1,4 +1,4 @@
-﻿
+
 <html lang="en" class=""><head>
 
   <meta charset="UTF-8">
@@ -170,7 +170,7 @@ to {
 </head>
 
 <body>
-  <form class="login-form" action="sesionini.php" method="post">
+  <form class="login-form" action="login.php" method="post">
   <p class="login-text">
     <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
@@ -184,7 +184,9 @@ to {
 <a href="registro.html" class="login-forgot-pass">Registrate</a>
 <div class="underlay-photo"></div>
 <div class="underlay-black"></div>
-<div = "error"></div>
+<div = "error">
+<span><?php echo $error; ?></span>
+</div>
 
 
 <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>

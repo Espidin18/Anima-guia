@@ -1,3 +1,6 @@
+<?php
+include 'session.php';
+?>
 <html lang="en">
 <head>
 
@@ -10,34 +13,6 @@
             font-style: normal;
             font-weight: 200;
             src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVtaorCIPrQ.ttf) format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Raleway';
-            font-style: normal;
-            font-weight: 300;
-            src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEorCIPrQ.ttf) format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Raleway';
-            font-style: normal;
-            font-weight: 400;
-            src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCIPrQ.ttf) format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Raleway';
-            font-style: normal;
-            font-weight: 500;
-            src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvoorCIPrQ.ttf) format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Raleway';
-            font-style: normal;
-            font-weight: 700;
-            src: url(https://fonts.gstatic.com/s/raleway/v19/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCIPrQ.ttf) format('truetype');
         }
 
         body {
@@ -182,12 +157,6 @@
             text-decoration: none;
             z-index: 1;
         }
-		table {
-		width: 100%;
-		}
-		.50 {
-		width: 50%;
-		}
     </style>
 
 </head>
@@ -197,18 +166,22 @@
     <div id="preguntas">
         <div id="header">
             <h1>Preguntas Frecuentes</h1>
-            <h4>Dar clic para abrir las preguntas</h4>
-            <p><small>hecho por <strong>BP</small></p>
+            <p><small>Bienvenid@ <strong><i><?php echo $login_session; ?></i></small></p>
         </div>
 
 		<?php
 
-		$servidor = 'localhost';
-		$base_datos = 'guinda';
-		$usuario = 'root';
-		$clave = '';
 
-		$con = new PDO("mysql:host=$servidor; dbname=$base_datos", $usuario, $clave);
+
+		if (isset($_SESSION['tipo'])== 1){
+					header('location: http://192.168.0.2/bp/Anima%20Guinda/FAQCRUD.php');
+		}elseif (isset($_SESSION['tipo'])== 1) {
+            header('location: FAQdiseñador.php');
+        }elseif (isset($_SESSION['tipo'])== 1) {
+            header('location: FAQdiseñador.html');
+        }else{
+            header('Location: index.html');
+        }
 
 		?>
 
@@ -219,12 +192,19 @@
 			<th><font size=5>Respuesta</font></th>
 		</tr>
 		</thead>
-		<?php foreach ($con->query('SELECT * from preguntas') as $row){ ?> 
+		<?php
+		foreach ($con->query("SELECT * from preguntas") as $row){
+		?>
 		<tr>
 	<td><font size=3><?php echo $row['pregunta'] ?></font></td>
     <td><font size=3><?php echo $row['respuesta'] ?></font></td>
 		</tr>
-	<?php } ?>
+	<?php
+	}
+	?>
 </table>
+    <div>
+				<h4><a href="logout.php"> Cerrar sesión</a></h4>
+    </div>
 </body>
 </html>
