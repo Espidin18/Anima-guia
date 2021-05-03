@@ -14,7 +14,7 @@ if ($con == true) {
  $insert1->execute();
 
  $con = null;
- header("Location: http://192.168.0.2/bp/Anima%20Guinda/FAQCRUD.php");
+ header("Location: FAQdiseñador.html");
 }
  else {
 

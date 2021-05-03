@@ -281,7 +281,7 @@
 	<td><font size=3><?php echo $row['pregunta'] ?></font></td>
     <td><font size=3><?php echo $row['respuesta'] ?></font></td>
     <td>
-        <form   method='POST' action="DELETE.php">
+        <form   method='post' action="DELETE.php">
         <input type='hidden' name='eliminar' value='".$result -> pregunta"'>
         <button class="boton verde" name='del'>Eliminar</button>
         </form>
