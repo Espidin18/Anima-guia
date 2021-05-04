@@ -2,18 +2,16 @@
 include 'conexion.php';
 
 if(isset($_POST['cambiar'])){
-$preg=trim($_POST['preguntaNue']);
-$resp=trim($_POST['respuestaNue']);
-$idPre=trim($_POST['idNue']);
 
 
- $insert1 = $con->prepare("UPDATE `preguntas` SET `pregunta` = '$preg', `respuesta` = '$resp' WHERE `preguntas`.`idPregunta` = $idPre");
-
- $insert1->bindParam(':pregunta', $_POST['pregunta']);
- $insert1->bindParam(':respuesta', $_POST['respuesta']);
+ $consulta = $con->prepare("UPDATE `preguntas` SET `pregunta` = :pregunta , `respuesta` = :respuesta WHERE `preguntas`.`idPregunta` = :idPregunta");
+ $preg= $_POST['pregunta'];
+ $resp= $_POST['respuesta'];
+ $consulta>bindParam(':pregunta', $preg, PDO::PARAM_INT );
+ $consulta->bindParam(':respuesta', $resp, PDO::PARAM_INT);
 
  //si no la regue al chile y todo esta correcto ejecuto lo anterior
- $insert1->execute();
+ $consulta->execute();
 
  $con = null;
  header("Location: FAQCRUD.php");

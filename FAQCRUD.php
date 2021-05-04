@@ -277,19 +277,20 @@
 		foreach ($con->query("SELECT * from preguntas") as $row){
 		?>
 		<tr>
-	<td><font size=3><?php echo $row['idPregunta'] ?></font></td>
-	<td><font size=3><?php echo $row['pregunta'] ?></font></td>
-    <td><font size=3><?php echo $row['respuesta'] ?></font></td>
+	<td><font size=3 contenteditable="true"><?php echo $row['idPregunta'] ?></font></td>
+	<td><font size=3 contenteditable="true"><?php echo $row['pregunta'] ?></font></td>
+    <td><font size=3 contenteditable="true"><?php echo $row['respuesta'] ?></font></td>
     <td>
-        <form   method='post' action="DELETE.php">
-        <input type='hidden' name='eliminar' value='".$result -> pregunta"'>
-        <button class="boton verde" name='del'>Eliminar</button>
-        </form>
+        <form   method='POST' action="DELETE.php">
+       <input type='hidden' name='eliminar' value='".$result -> pregunta"'>
+       <button class="boton verde" name='del'>Eliminar</button>
+       </form>
     </td>
 	<td>
-
-	<a class="boton rojo" href="Cambiar.html" >Cambiar</a>
-		</form>
+        <form   method='POST' action="Cambiar.php">
+        <input type='hidden' name='cambiar' value='".$result -> idPregunta"'>
+        <button class="boton rojo" name='cam'>cambiar</button>
+        </form>
     </td>
 		</tr>
 

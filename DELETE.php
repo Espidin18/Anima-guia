@@ -6,9 +6,9 @@ $consulta = "DELETE FROM `preguntas` WHERE `preguntas`.`pregunta` = :pregunta";
 $sql = $con-> prepare($consulta);
 $id=trim($_POST['pregunta']);
 $sql -> bindParam('pregunta', $id, PDO::PARAM_INT);
-header("Location: FAQCRUD.php");
-$sql->execute();
 
+$sql->execute();
+header("Location: FAQCRUD.php");
 }else{
 header("Location: index.html");
 }
