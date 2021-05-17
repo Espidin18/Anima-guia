@@ -23,8 +23,6 @@ if ($con == true) {
  $insert->bindParam(':nombre_s', $_POST['nombre_s']);
  $insert->bindParam(':apellidos', $_POST['apellidos']);
  $insert->bindParam(':contrasena', $password);
- $insert->bindParam(':perfil', $perfil);
-
  //si no la regue al chile y todo esta correcto ejecuto lo anterior
  $insert->execute();
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2021 a las 03:40:14
+-- Tiempo de generación: 10-05-2021 a las 19:11:50
 -- Versión del servidor: 10.4.16-MariaDB
 -- Versión de PHP: 7.4.12
 
@@ -39,6 +39,61 @@ CREATE TABLE `calendario` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `catalogo`
+--
+
+CREATE TABLE `catalogo` (
+  `idtipo` int(11) NOT NULL,
+  `tipo` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `catalogo`
+--
+
+INSERT INTO `catalogo` (`idtipo`, `tipo`) VALUES
+(1, 'Administrador'),
+(2, 'Cliente'),
+(3, 'Editor'),
+(4, 'Artista');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `login`
+--
+
+CREATE TABLE `login` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(200) NOT NULL,
+  `usuario` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `login`
+--
+
+INSERT INTO `login` (`id_usuario`, `nombre`, `usuario`) VALUES
+(3, 'BRUCE WAYNE', '¿quien es batman?'),
+(5, 'BUSCALO', '¿de que dia es el 7 de mayo?'),
+(6, 'CARLOS', '¿dc o marvel?'),
+(53, 'TOMARLA', '¿matarla o salvarla?'),
+(56, 'PIZZA HAWAIANA', '¿pepperoni o pizza?'),
+(59, 'pay de piña plx', '¿Cajita feliz o pay de piña?'),
+(60, 'yep', '¿Hoy es el dia?'),
+(63, 'NO, EL SISTEMA ESTÁ HECHO, PARA QUE TOME LA HORA LOCAL ', '¿se puede cambiar la fecha del calendario?'),
+(64, ' Las que sean necesarias resolver', '¿Cuántas preguntas se pueden subir?'),
+(65, 'En el módulo de perfil tiene una opción para personalizarlo', '¿Se puede cambiar el color de los elementos?'),
+(66, 'Debe tener una forma cuadrada y debe encontrarse la imagen en tu galería, arrastras el archivo y se cambia', '¿Cómo se puede subir una foto de perfil?'),
+(67, 'Para el Instituto Politécnico Nacional', '¿Para qué institución se pensó creando el programa?'),
+(68, 'No, se puede subir cuantas tareas tengas', '¿Hay un limite de tareas para un día?'),
+(69, 'no', '¿Cualquiera puede subir preguntas a la página?'),
+(70, 'no valido', '¿+dar alta a+´{‘¿?'),
+(71, '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `paquete`
 --
 
@@ -65,9 +120,8 @@ CREATE TABLE `preguntas` (
 --
 
 INSERT INTO `preguntas` (`idPregunta`, `pregunta`, `respuesta`) VALUES
-(1, 'el santo', NULL),
-(2, 'oñiwejvñoiejvw', NULL),
-(3, 'El atrevido pitrs', 'aloja');
+(26, '54erfg78iuojik', '78yuhjnkoml '),
+(27, '234567890', 'tgbnjiklplpl,l');
 
 -- --------------------------------------------------------
 
@@ -133,17 +187,19 @@ CREATE TABLE `usuario_perfil` (
   `hashp` varchar(20) DEFAULT NULL,
   `tema` varchar(40) DEFAULT NULL,
   `active` int(1) NOT NULL DEFAULT 0,
-  `descripcion` varchar(200) DEFAULT NULL
+  `descripcion` varchar(200) DEFAULT NULL,
+  `id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario_perfil`
 --
 
-INSERT INTO `usuario_perfil` (`id_usuario`, `nombreusu`, `nombre_s`, `apellidos`, `correo`, `boleta`, `telefonom`, `contrasena`, `hashp`, `tema`, `active`, `descripcion`) VALUES
-(1, 'Nxs_Romo', NULL, NULL, 'brazukaone@gmail.com', 2019092462, NULL, NULL, NULL, NULL, 0, NULL),
-(2, 'ElMamastrofico', NULL, NULL, 'rilheasun6969@gmail.com', 2019090112, NULL, NULL, NULL, NULL, 0, NULL),
-(3, 'RuBernal', NULL, NULL, 'Elnalgon78@hotmail.com', 2019090101, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `usuario_perfil` (`id_usuario`, `nombreusu`, `nombre_s`, `apellidos`, `correo`, `boleta`, `telefonom`, `contrasena`, `hashp`, `tema`, `active`, `descripcion`, `id`) VALUES
+(4, 'cliente', NULL, NULL, 'cliente@gmail.com', NULL, '55481238', 'cliente', NULL, NULL, 0, NULL, 2),
+(28, 'Akenaton', 'akenton', 'hernandez', 'artista@gmail.com', NULL, '55394720938', 'artista', NULL, NULL, 0, NULL, 4),
+(29, 'carro', 'carro', 'rojo', 'editor@gmail.com', NULL, '5587697769', 'editor', NULL, NULL, 0, NULL, 3),
+(30, 'muffin', 'muffin', 'gmail', 'admin@gmail.com', NULL, '5578876879', 'admin', NULL, NULL, 0, NULL, 1);
 
 --
 -- Índices para tablas volcadas
@@ -157,6 +213,18 @@ ALTER TABLE `calendario`
   ADD KEY `id_TC` (`id_TC`);
 
 --
+-- Indices de la tabla `catalogo`
+--
+ALTER TABLE `catalogo`
+  ADD PRIMARY KEY (`idtipo`);
+
+--
+-- Indices de la tabla `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- Indices de la tabla `paquete`
 --
 ALTER TABLE `paquete`
@@ -167,7 +235,7 @@ ALTER TABLE `paquete`
 -- Indices de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  ADD PRIMARY KEY (`idPregunta`) USING BTREE;
+  ADD PRIMARY KEY (`idPregunta`);
 
 --
 -- Indices de la tabla `rel_usu_cal`
@@ -201,7 +269,8 @@ ALTER TABLE `tipo_paque`
 -- Indices de la tabla `usuario_perfil`
 --
 ALTER TABLE `usuario_perfil`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -214,6 +283,18 @@ ALTER TABLE `calendario`
   MODIFY `id_calendario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `catalogo`
+--
+ALTER TABLE `catalogo`
+  MODIFY `idtipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `login`
+--
+ALTER TABLE `login`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
+--
 -- AUTO_INCREMENT de la tabla `paquete`
 --
 ALTER TABLE `paquete`
@@ -223,7 +304,7 @@ ALTER TABLE `paquete`
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idPregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `rel_usu_cal`
@@ -253,7 +334,7 @@ ALTER TABLE `tipo_paque`
 -- AUTO_INCREMENT de la tabla `usuario_perfil`
 --
 ALTER TABLE `usuario_perfil`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Restricciones para tablas volcadas
@@ -284,6 +365,12 @@ ALTER TABLE `rel_usu_cal`
 ALTER TABLE `rel_usu_paq`
   ADD CONSTRAINT `rel_usu_paq_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario_perfil` (`id_usuario`),
   ADD CONSTRAINT `rel_usu_paq_ibfk_2` FOREIGN KEY (`id_paquete`) REFERENCES `paquete` (`id_paquete`);
+
+--
+-- Filtros para la tabla `usuario_perfil`
+--
+ALTER TABLE `usuario_perfil`
+  ADD CONSTRAINT `usuario_perfil_ibfk_1` FOREIGN KEY (`id`) REFERENCES `catalogo` (`idtipo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

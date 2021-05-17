@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header" align="center">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Editar usuario</h4>
+        <h4 class="modal-title" id="myModalLabel">Editar pregunta</h4>
       </div>
       <div class="modal-body">
 
@@ -73,13 +73,7 @@ $('#btnEditar<?php echo $row_usuario['id_usuario'];?>').click(function() {
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
 			}
-      else if(data==3){
-           $.smkAlert({
-           text: 'Usuario Duplicado',
-           type: 'warning'
-          });
-      }
-			else{
+      	else{
             $.smkAlert({
             text: 'Error',
             type: 'danger'

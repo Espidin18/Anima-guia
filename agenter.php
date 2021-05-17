@@ -311,29 +311,64 @@ include 'session.php';
 <div class="header"><a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="Anima guinda"></a></div>
     <div id="preguntas">
         <div id="header">
-            <h1>Preguntas Frecuentes</h1>
+            <h1>Reportes</h1>
             <p><small>Bienvenid@ <strong><i><?php echo $login_session; ?></i></small></p>
         </div>
-        <?php
-
-                if ($_SESSION['tipo'] != 2){  ?>
-                    <a class="boton azul" href="FAQdiseñador.html" >Cambiar</a>
-             <?php   }
-        ?>
 
 <table border="0" class="table table-striped" width="80%">
 		<thead>
 		<tr>
-			<th><font size=5>Pregunta</font></th>
-			<th><font size=5>Respuesta</font></th>
+			<th><font size=5>Número</font></th>
+			<th><font size=5>Reporte</font></th>
+			<th><font size=5>Fecha</font></th>
+			<th><font size=5>Usuario</font></th>
+			<th><font size=5>Agente</font></th>
+			<th><font size=5>Cambiar</font></th>
 		</tr>
 		</thead>
 		<?php
-		foreach ($con->query("SELECT * from login") as $row){
+		$sql="SELECT * FROM reportes";
+		$result=mysqli_query($con,$sql);
+		
+		while($row=mysqli_fetch_array($result)){
 		?>
 		<tr>
-	<td><font size=3><?php echo $row['usuario'] ?></font></td>
-    <td><font size=3><?php echo $row['nombre'] ?></font></td>
+	<td><font size=3><?php echo $row['idReporte'] ?></font></td>
+    <td><font size=3><?php echo $row['reporte'] ?></font></td>
+	<td><font size=3><?php echo $row['fechar'] ?></font></td>
+	<td><font size=3><?php echo $row['usuarior'] ?></font></td>
+	<td><font size=3>
+		<form action="#" method="post">
+		<input type="checkbox" name="visto" value="visto">Visto</input>
+		<input type="submit" name="submit" value="Enviar Informacion"/>
+		</form>
+		<?php
+		// COndicional para validad el genero
+		if (isset($_POST['visto'])){
+			$row1=$row['idReporte'];
+			$agente = $login_session;
+			$insert2 = $con->prepare("UPDATE reportes SET agenter='$agente' WHERE idReporte=$row1");
+			$insert2->execute();
+		}
+		echo $row['agenter']
+	?></font></td>
+	<td><font size=3>
+		<form action="#" method="post">
+		<div class="formgroup" id="name-form">
+                <label for="reporte"></label>
+                <input type="text" id="reporte" name="reporte" />
+            </div>
+
+            <input type="submit" value="actualizalo" />
+		</form>
+		<?php
+		if (isset($_POST['reporte'])){
+			$nreporte = $_POST['reporte'];
+			$insert3 = $con->prepare("UPDATE reportes SET reporte='$nreporte' WHERE idReporte=idReporte");
+			$insert3->execute();
+		}
+		?>
+	</font></td>
 		</tr>
 	<?php
 	}
