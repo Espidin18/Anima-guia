@@ -7,31 +7,41 @@ include 'session.php';
 
     <title>Usuario</title>
     <meta charset="ISO-8859-1" >
-	<meta name="author" content="bp">
-	<meta name="description" content="Pagina estudiantil para la administraci�n">
-	<meta name="keywords" content="Administrar, premium, redes estudiantiles">
-	<!-- estamos refrescando la pagina cada 400 segundos -->
-	<meta http-equiv="refresh" content="400">
-	<!-- Adaptar la p�gina a dispositivos moviles -->
-	<meta name="viewport" content="width=device-width,initial-scale= 1,maximum-scale=1" user-scalable= no />
-	<title>Perfil</title>
-	<!-- Estilos & Fuentes -->
+    <meta name="author" content="bp">
+    <meta name="description" content="Pagina estudiantil para la administraci�n">
+    <meta name="keywords" content="Administrar, premium, redes estudiantiles">
+    <!-- estamos refrescando la pagina cada 400 segundos -->
+    <meta http-equiv="refresh" content="400">
+    <!-- Adaptar la p�gina a dispositivos moviles -->
+    <meta name="viewport" content="width=device-width,initial-scale= 1,maximum-scale=1" user-scalable= no />
+    <title>Perfil</title>
+    <!-- Estilos & Fuentes -->
     <!-- Fuentes de google -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i%7CRajdhani:400,600,700"
         rel="stylesheet">
     <!-- Estilos de plugins -->
     <link rel="stylesheet" href="assets/css/loader/loaders.css">
     <link rel="stylesheet" href="assets/css/font-awesome/font-awesome.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+
     <link rel="stylesheet" href="assets/css/aos/aos.css">
     <link rel="stylesheet" href="assets/css/swiper/swiper.css">
     <link rel="stylesheet" href="assets/css/lightgallery.min.css">
-    <!-- modelo del estilo -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- modelo del estilo y icono-->
+    <link rel="stylesheet" href="assets/css/style.css"
     <!-- Estilo de la Responsiva -->
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <link rel="stylesheet" href="css/smoke.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="css/fileinput.min.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  <link href="../assets/images/favicon.png" rel="icon">
+  <link href="../assets/images/apple-touch-icon.png" rel="apple-touch-icon">
     <style>
     @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
         @font-face {
@@ -52,7 +62,7 @@ include 'session.php';
         body {
             background-color: #50b98a;
             color: #20503b;
-            
+
             padding-bottom: 90px;
             -webkit-font-smoothing: antialiased;
 
@@ -300,8 +310,8 @@ include 'session.php';
                         margin-left: 100%;
                     }
                 }
-
     </style>
+
     <link href="assets/images/favicon.png" rel="icon">
     <link href="assets/images/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -329,11 +339,11 @@ include 'session.php';
 		<?php
 		$sql="SELECT * FROM reportes";
 		$result=mysqli_query($con,$sql);
-		
+
 		while($row=mysqli_fetch_array($result)){
 		?>
 		<tr>
-	<td><font size=3><?php echo $row['idReporte'] ?></font></td>
+	<td ><font size=3><p id="ANO" ><?php echo $row['idReporte'] ?></p></font></td>
     <td><font size=3><?php echo $row['reporte'] ?></font></td>
 	<td><font size=3><?php echo $row['fechar'] ?></font></td>
 	<td><font size=3><?php echo $row['usuarior'] ?></font></td>
@@ -352,23 +362,13 @@ include 'session.php';
 		}
 		echo $row['agenter']
 	?></font></td>
-	<td><font size=3>
-		<form action="#" method="post">
-		<div class="formgroup" id="name-form">
-                <label for="reporte"></label>
-                <input type="text" id="reporte" name="reporte" />
-            </div>
+	<td >
 
-            <input type="submit" value="actualizalo" />
-		</form>
-		<?php
-		if (isset($_POST['reporte'])){
-			$nreporte = $_POST['reporte'];
-			$insert3 = $con->prepare("UPDATE reportes SET reporte='$nreporte' WHERE idReporte=idReporte");
-			$insert3->execute();
-		}
-		?>
-	</font></td>
+        <a class="btn btn-primary" href="batman/editar.php?id=<?php echo $row['idReporte'] ?>">
+        <i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+
+
+    </td>
 		</tr>
 	<?php
 	}

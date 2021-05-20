@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2021 a las 19:11:50
+-- Tiempo de generación: 20-05-2021 a las 16:40:40
 -- Versión del servidor: 10.4.16-MariaDB
 -- Versión de PHP: 7.4.12
 
@@ -150,6 +150,31 @@ CREATE TABLE `rel_usu_paq` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `reportes`
+--
+
+CREATE TABLE `reportes` (
+  `idReporte` int(11) NOT NULL,
+  `reporte` varchar(60) CHARACTER SET latin1 NOT NULL,
+  `fechar` date NOT NULL,
+  `usuarior` varchar(60) CHARACTER SET latin1 NOT NULL,
+  `agenter` varchar(60) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reportes`
+--
+
+INSERT INTO `reportes` (`idReporte`, `reporte`, `fechar`, `usuarior`, `agenter`) VALUES
+(1, 'parami', '2021-05-16', 'cliente@gmail.com', 'admin@gmail.com'),
+(2, 'pan', '2021-05-16', 'cliente@gmail.com', 'admin@gmail.com'),
+(3, 'peterpan', '2021-05-16', 'cliente@gmail.com', 'admin@gmail.com'),
+(4, 'wedghh', '2021-05-17', 'cliente@gmail.com', 'admin@gmail.com'),
+(5, 'wedghh', '2021-05-17', 'cliente@gmail.com', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipo_cal`
 --
 
@@ -254,6 +279,12 @@ ALTER TABLE `rel_usu_paq`
   ADD KEY `id_paquete` (`id_paquete`);
 
 --
+-- Indices de la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  ADD PRIMARY KEY (`idReporte`);
+
+--
 -- Indices de la tabla `tipo_cal`
 --
 ALTER TABLE `tipo_cal`
@@ -317,6 +348,12 @@ ALTER TABLE `rel_usu_cal`
 --
 ALTER TABLE `rel_usu_paq`
   MODIFY `idRUP` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  MODIFY `idReporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_cal`
