@@ -26,9 +26,4 @@ function select_id($tblname,$field_name,$field_id){
 	return $sql;
 
 }
-function borrar($tblname,$field_id,$id){
-	$sql = "DELETE FROM `".$tblname."` WHERE `reportes`.`".$field_id."` = ".$id."";
-    return $db=db_query($sql);
-
-}
 ?>

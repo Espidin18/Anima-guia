@@ -15,7 +15,7 @@ Como se que no pusiste atencion te explico. El Cost es la fuerza del Cifrado o e
 if ($con == true) {
 
 
- $insert = $con->prepare("INSERT INTO usuario_perfil (correo, telefonom, nombreusu, nombre_s, apellidos, contrasena) VALUES (:correo, :telefonom, :nombreusu, :nombre_s, :apellidos, :contrasena)");
+ $insert = $con->prepare("INSERT INTO usuario_perfil (correo, telefonom, nombreusu, nombre_s, apellidos, contrasena, id) VALUES (:correo, :telefonom, :nombreusu, :nombre_s, :apellidos, :contrasena, :id)");
 
  $insert->bindParam(':correo', $_POST['correo']);
  $insert->bindParam(':telefonom', $_POST['telefonom']);
@@ -23,6 +23,7 @@ if ($con == true) {
  $insert->bindParam(':nombre_s', $_POST['nombre_s']);
  $insert->bindParam(':apellidos', $_POST['apellidos']);
  $insert->bindParam(':contrasena', $password);
+ $insert->bindParam(':id', $perfil);
  //si no la regue al chile y todo esta correcto ejecuto lo anterior
  $insert->execute();
 

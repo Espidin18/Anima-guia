@@ -76,22 +76,22 @@ label {
 <h1>Editar </h1>
 <br><br>
 <?php
-include("function.php");
+include("function2.php");
 $id = $_GET['id'];
 select_id('reportes','idReporte',$id);
 ?>
 <form action="" method="post">
-	<input type="text" value="<?php echo $row->reporte;?>" name="reporte">
+	<input type="text" value="<?php echo $row->id;?>" name="id">
 	<input type="submit" name="submit">
 </form>
 
 <?php
 
 	if(isset($_POST['submit'])){
-		$field = array("reporte"=>$_POST['reporte']);
+		$field = array("id"=>$_POST['id']);
 		$tbl = "reportes";
 		edit($tbl,$field,'idReporte',$id);
-		header("location:../agenter.php");
+		header("location:../gerenter.php");
 	}
 ?>
 </div>

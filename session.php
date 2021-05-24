@@ -18,9 +18,11 @@ session_start();// Iniciando Sesion
 // Guardando la sesion
 $user_check=$_SESSION['login_user_sys'];
 // SQL Query para completar la informacion del usuario
-$ses_sql=mysqli_query($con, "select correo from `usuario_perfil`where correo='$user_check'");
+$ses_sql=mysqli_query($con, "select * from `usuario_perfil`where correo='$user_check'");
 $row = mysqli_fetch_assoc($ses_sql);
 $login_session =$row['correo'];
+$login_desc = $row['descripcion'];
+$login_user = $row['nombreusu'];
 if(!isset($login_session)){
 mysqli_close($con); // Cerrando la conexion
 header('Location: index.html'); // Redirecciona a la pagina de inicio

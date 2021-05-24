@@ -91,7 +91,7 @@ select_id('reportes','idReporte',$id);
 		$field = array("reporte"=>$_POST['reporte']);
 		$tbl = "reportes";
 		edit($tbl,$field,'idReporte',$id);
-		header("location:../agenter.php");
+		header("location:../gerenter.php");
 	}
 ?>
 </div>

@@ -4,30 +4,46 @@ include 'session.php';
 
 
 $reporte =  $_POST['reporte'];
-$usuario = $login_session;
+$usuario =  $_POST['usuario'];
+$agente = $login_session;
+$estado = 1;
 
 if ($con == true) {
 	
-	if ($_SESSION['tipo'] != 2){
+	if ($_SESSION['tipo'] == 2){
 
-	header("Location: agenter.php");
+	header("Location: usuarior.php");
 	
 	}
-	else {
+		
+		else if ($_SESSION['tipo'] == 5){
 
-		$insert1 = $con->prepare("INSERT INTO reportes SET reporte='$reporte', fechar = CURDATE() , usuarior='$usuario'");
+
+		$insert1 = $con->prepare("INSERT INTO reportes SET reporte='$reporte', fechar = CURDATE() , usuarior='$usuario', agenter='$agente', id='$estado'");
 		
 		$insert1->execute();
 		
 		
-		 header("Location: index.html");
+		 header("Location: agenter.php");
 
 		$con = null;
 	}
+	else if ($_SESSION['tipo'] == 6){
+
+
+		$insert1 = $con->prepare("INSERT INTO reportes SET reporte='$reporte', fechar = CURDATE() , usuarior='$usuario', agenter='$agente', id='$estado'");
+		
+		$insert1->execute();
+		
+		
+		 header("Location: gerenter.php");
+
+		$con = null;
 }
  else {
 
  header("Location: index.html");
 
  }
+}
 ?>

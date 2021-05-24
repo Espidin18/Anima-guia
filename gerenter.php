@@ -348,23 +348,36 @@ include 'session.php';
     <td><font size=3><?php echo $row['reporte'] ?></font></td>
 	<td><font size=3><?php echo $row['fechar'] ?></font></td>
 	<td><font size=3><?php echo $row['usuarior'] ?></font></td>
-	<td><font size=3><?php echo $row['agenter']?></font></td>
-	<td>
-
-        <a class="btn btn-primary" href="batman/editar.php?id=<?php echo $row['idReporte'] ?>">
+	<td><font size=3><?php echo $row['agenter'] ?></font></td>
+	<td >
+        <a class="btn btn-primary" href="batman1.2/editar.php?id=<?php echo $row['idReporte'] ?>">
         <i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-        &nbsp;
-
-        <a class="btn btn-primary" href="batman/calamardo.php?id=<?php echo $row['idReporte'] ?>">
-        <i class="fa fa-eraser fa-lg" aria-hidden="true"></i></a>
-
     </td>
-	<td><font size=3><?php echo $row['id']?></font></td>
-		</tr>
+	<td><font size=3> <a class="btn btn-primary" href="batman2/editar2.php?id=<?php echo $row['idReporte'] ?>">
+        <i class="fa fa-pencil fa-lg" aria-hidden="true"><?php echo $row['id'] ?></i></a></font></td>
+	</tr>
+	
 	<?php
 	}
 	?>
 </table>
+<form class="login-form" action="borrar.php" id="waterform" method="post">
+<select name="reporte" id="reporte">
+    <?php 
+	$sql1="SELECT idReporte FROM reportes";
+		$result1=mysqli_query($con,$sql1);
+
+		while($row1=mysqli_fetch_array($result1)){ 
+	?>
+        <option value="<?php $row1['idReporte'] ?>"><?php echo $row1['idReporte'] ?></option>
+		<?php
+		$opcion = $row1['idReporte'];
+		} 
+		?>
+</select>
+			
+            <input type="submit" value="envialo" />
+ </form>
     <div>
 				<h4><a href="logout.php"> Cerrar sesión</a></h4>
     </div>

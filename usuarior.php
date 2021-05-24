@@ -333,7 +333,6 @@ include 'session.php';
 			<th><font size=5>Fecha</font></th>
 			<th><font size=5>Usuario</font></th>
 			<th><font size=5>Agente</font></th>
-			<th><font size=5>Cambiar</font></th>
 			<th><font size=5>Estado</font></th>
 		</tr>
 		</thead>
@@ -349,16 +348,6 @@ include 'session.php';
 	<td><font size=3><?php echo $row['fechar'] ?></font></td>
 	<td><font size=3><?php echo $row['usuarior'] ?></font></td>
 	<td><font size=3><?php echo $row['agenter']?></font></td>
-	<td>
-
-        <a class="btn btn-primary" href="batman/editar.php?id=<?php echo $row['idReporte'] ?>">
-        <i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-        &nbsp;
-
-        <a class="btn btn-primary" href="batman/calamardo.php?id=<?php echo $row['idReporte'] ?>">
-        <i class="fa fa-eraser fa-lg" aria-hidden="true"></i></a>
-
-    </td>
 	<td><font size=3><?php echo $row['id']?></font></td>
 		</tr>
 	<?php
